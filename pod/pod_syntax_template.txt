@@ -1,0 +1,7 @@
+=pod
+
+=head4 syntax()
+
+When the script is executed without any parameters, this function displays script syntax.
+
+=cut
