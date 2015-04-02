@@ -42,6 +42,8 @@ if(! -e "copy.pro")              { $util->write_file("copy.pro",              ge
 if(! -e "makefile")              { $util->write_file("makefile",              get_makefile($filename)); }
 if(! -e "r.bat")                 { $util->write_file("r.bat",                 get_r_bat($filename)); }
 if(! -e "run")                   { $util->write_file("run",                   get_run($filename)); }
+if(! -e "edit.bat")              { $util->write_file("edit.bat",              get_edit_bat($filename)); }
+if(! -e "edit")                  { $util->write_file("edit",                  get_edit($filename)); }
 
 
 sub get_main
@@ -723,6 +725,35 @@ RUN
     return $run;
 }
 
+
+sub get_edit_bat
+{
+    my $filename = shift;
+
+    my $edit_bat=<<EDIT_BAT;
+\@echo off
+
+title $filename
+
+start gvim outline.tex introduction.tex conclusion.tex
+EDIT_BAT
+
+    return $edit_bat;
+}
+
+
+sub get_edit
+{
+    my $filename = shift;
+
+    my $run=<<EDIT;
+#!/bin/bash
+
+gvim outline.tex introduction.tex conclusion.tex
+EDIT
+
+    return $edit;
+}
 
 sub syntax
 {
