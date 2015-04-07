@@ -746,7 +746,7 @@ sub get_edit
 {
     my $filename = shift;
 
-    my $run=<<EDIT;
+    my $edit=<<EDIT;
 #!/bin/bash
 
 gvim outline.tex introduction.tex conclusion.tex
